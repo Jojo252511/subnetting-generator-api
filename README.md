@@ -27,6 +27,15 @@ npm start
 ```
 ## Functions
 
+### Example
+```http
+http://127.0.0.1/:3000/api/subnet/all/192.168.1.0?mask=%2F24
+```
+**IP:** 192.68.1.0  
+**MASK:** /24  
+
+If no mask is specified automatically `/24`
+
 ### GET /api/subnet/{ip}
 
 This endpoint calculates the first subnet based on the given IP address and subnet mask.
