@@ -31,7 +31,7 @@ npm start
 ```
 http://127.0.0.1/:3000/api/subnet/all/192.168.1.0?mask=%2F24
 ```
-**IP:** 192.68.1.0  
+**IP:** 192.168.1.0  
 **MASK:** /24  
 
 If no mask is specified automatically `/24`
