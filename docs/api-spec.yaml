@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: Subnetting API
+  version: 1.0.0
+  description: API for subnetting calculations
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/subnet/{ip}:
+    get:
+      summary: Get the first subnet
+      parameters:
+        - name: ip
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 192.168.1.1
+        - name: mask
+          in: query
+          required: false
+          schema:
+            type: string
+            example: /24
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subnet:
+                    type: string
+                  mask:
+                    type: string
+                  cidr:
+                    type: string
+                  firstIp:
+                    type: string
+                  lastIp:
+                    type: string
+                  broadcast:
+                    type: string
+        '400':
+          description: Invalid IP Address or Subnet Mask
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /api/subnet/all/{ip}:
+    get:
+      summary: Get all subnets (max 16)
+      parameters:
+        - name: ip
+          in: path
+          required: true
+          schema:
+            type: string
+            example: 192.168.1.1
+        - name: mask
+          in: query
+          required: false
+          schema:
+            type: string
+            example: /24
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    subnet:
+                      type: string
+                    mask:
+                      type: string
+                    cidr:
+                      type: string
+                    firstIp:
+                      type: string
+                    lastIp:
+                      type: string
+                    broadcast:
+                      type: string
+        '400':
+          description: Invalid IP Address or Subnet Mask
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
